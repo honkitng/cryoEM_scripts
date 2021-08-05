@@ -10,7 +10,7 @@ Accepts a mrc file as an input and outputs cropped mrc files specified by the us
 
 1. Edit user specified inputs
 2. Run script from command line
-3. Add boxes around areas you wish to crop
+3. Add boxes around areas you wish to crop (boxes not visible in current version)
 4. Close GUI and all images should be saved to the specified directory
 
 ### Requirements:
