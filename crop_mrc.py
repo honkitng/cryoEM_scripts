@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 OPEN_FILE_PATH = '/path/to/file'
 SAVE_ROOT_NAME = 'root_name'
-SAVE_ROOT_PATH = '/path/to/save/new/file/'
+SAVE_DIR_NAME = '/path/to/save/new/file/'
 
 """
 
@@ -57,5 +57,5 @@ for key in coords.keys():
     bottom_y = max(coords[key][0][1], coords[key][1][1])
 
     mrc_cropped = mrc_orig[top_y:bottom_y, top_x:bottom_x]
-    with mrcfile.new(f'{os.path.join(SAVE_ROOT_PATH, SAVE_ROOT_NAME)}_{key:03}.mrc') as mrc:
+    with mrcfile.new(f'{os.path.join(SAVE_DIR_NAME, SAVE_ROOT_NAME)}_{key:03}.mrc') as mrc:
         mrc.set_data(mrc_cropped)
