@@ -29,9 +29,16 @@ def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
             row_array = None
             for j in range(rows):
                 img_gray = np.fromfile(f, p_type, nx * ny).reshape(ny, nx)
-                img_gray[img_gray > 255] = 255
-                img_gray[img_gray < 0] = 0
-                img_gray = np.uint8(img_gray)
+
+                """
+                This seems to work for some but not all micrographs; may have to change depending on the micrographs
+                
+                # img_gray[img_gray > 255] = 255
+                # img_gray[img_gray < 0] = 0
+                # img_gray = np.uint8(img_gray)
+                """
+
+                img_gray = (img_gray / 256).astype('uint8')
 
                 if j > 0:
                     template = img_gray[:template_y]
@@ -93,6 +100,7 @@ if __name__ == '__main__':
 
     for img in range(image_count):
         _, mmm = mmm_stitching(args.file, img, args.rows, args.columns, args.overlap)
+        mmm = cv2.equalizeHist(mmm)
         # plt.imshow(mmm, cmap='gray')
         # plt.show()
         plt.imsave(f'mmm{img:03d}.tiff', mmm)
