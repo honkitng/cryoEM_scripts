@@ -24,7 +24,7 @@ def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
         matching_y = ny * overlap // 95
         byte_count = np.dtype(p_type).itemsize
 
-        f.seek(928 + ext_header + index * nx * ny * columns * rows * byte_count, 1)
+        f.seek(928 + int(ext_header) + index * int(nx) * int(ny) * columns * rows * byte_count, 1)
 
         for i in range(columns):
             row_array = None
@@ -106,5 +106,5 @@ if __name__ == '__main__':
         mmm = cv2.equalizeHist(mmm)
         # plt.imshow(mmm, cmap='gray')
         # plt.show()
-        plt.imsave(f'mmm{img:03d}.tiff', mmm)
-        print(f'mmm{img:03d}.tiff generated')
+        #plt.imsave(f'mmm{img:03d}.tiff', mmm)
+        #print(f'mmm{img:03d}.tiff generated')
