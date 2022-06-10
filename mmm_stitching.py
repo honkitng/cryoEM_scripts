@@ -11,17 +11,18 @@ def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
         nx, ny, nz, mode = np.fromfile(f, np.int32, 4)
         amin, amax, amean = np.fromfile(f, np.float32, 3, offset=60)
         ext_header = np.fromfile(f, np.int32, 1, offset=4)[0]
-        if mode == 1:
+        if mode == 0:
+            p_type = np.int8
+        elif mode == 1:
             p_type = np.short
-            byte_count = 2
         elif mode == 2:
             p_type = np.float32
-            byte_count = 4
 
         template_x = nx * overlap // 105
         matching_x = nx * overlap // 95
         template_y = ny * overlap // 105
         matching_y = ny * overlap // 95
+        byte_count = np.dtype(p_type).itemsize
 
         f.seek(928 + ext_header + index * nx * ny * columns * rows * byte_count, 1)
 
