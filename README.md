@@ -1,35 +1,5 @@
-# Cryo-EM data processing scripts
+# Cryo-EM scripts
 
 ----
 
-## crop_mrc.py
-
-Accepts a mrc file as an input and outputs cropped mrc files specified by the user.
-
-### Usage
-
-1. Edit user specified inputs
-2. Run script from command line
-3. Add boxes around areas you wish to crop (boxes not visible in current version)
-4. Close GUI and all images should be saved to the specified directory
-
-### Requirements:
-* python3.8
-* pip install matplotlib==3.4.2
-* pip install mrcfile==1.3.0
-
-----
-
-## mmm_stitching.py
-
-Accepts an MMM file and outputs stitched tiff files of all the MMMs.
-
-### Usage
-
-    ./saveMMM_[Operating system] [MMM file] [number of rows in MMM] [number of columns in MMM] [overlap %]
-
-### Requirements:
-* python3.8
-* pip install matplotlib==3.4.2
-* pip install opencv-python==4.5.5.62
-* pip install numpy==1.22.3
+Repository for Cryo-EM processing scripts

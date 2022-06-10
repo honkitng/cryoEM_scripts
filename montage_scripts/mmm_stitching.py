@@ -33,10 +33,12 @@ def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
 
                 """
                 This seems to work for some but not all micrographs; may have to change depending on the micrographs
-                
-                # img_gray[img_gray > 255] = 255
-                # img_gray[img_gray < 0] = 0
-                # img_gray = np.uint8(img_gray)
+                """
+
+                """
+                img_gray[img_gray > 255] = 255
+                img_gray[img_gray < 0] = 0
+                img_gray = np.uint8(img_gray)
                 """
 
                 img_gray = (img_gray / 256).astype('uint8')
