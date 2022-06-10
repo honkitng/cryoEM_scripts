@@ -14,7 +14,7 @@ def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
         if mode == 0:
             p_type = np.int8
         elif mode == 1:
-            p_type = np.short
+            p_type = np.int16
         elif mode == 2:
             p_type = np.float32
 
