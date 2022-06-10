@@ -1,7 +1,5 @@
 # Cryo-EM data processing scripts
 
----
-
 ## crop_mrc.py
 
 Accepts a mrc file as an input and outputs cropped mrc files specified by the user.
