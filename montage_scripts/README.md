@@ -1,7 +1,5 @@
 # Cryo-EM montage scripts
 
-----
-
 ## mmm_stitching.py
 
 Accepts an MMM file and outputs stitched tiff files of all the MMMs.
