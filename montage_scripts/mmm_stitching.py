@@ -106,5 +106,5 @@ if __name__ == '__main__':
         mmm = cv2.equalizeHist(mmm)
         # plt.imshow(mmm, cmap='gray')
         # plt.show()
-        #plt.imsave(f'mmm{img:03d}.tiff', mmm)
-        #print(f'mmm{img:03d}.tiff generated')
+        plt.imsave(f'mmm{img:03d}.tiff', mmm)
+        print(f'mmm{img:03d}.tiff generated')
