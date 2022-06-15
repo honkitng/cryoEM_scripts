@@ -85,6 +85,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script for stitching MMM's. Written by Honkit Ng.")
 
     parser.add_argument('file', help='MMM file location')
+    parser.add_argument('output', help='MMM output file root name')
     parser.add_argument('rows', help='number of images per rows', type=int)
     parser.add_argument('columns', help='number of images per column', type=int)
     parser.add_argument('overlap', help='%% overlap between individual images', type=int)
@@ -102,5 +103,5 @@ if __name__ == '__main__':
         mmm = cv2.equalizeHist(mmm)
         # plt.imshow(mmm, cmap='gray')
         # plt.show()
-        plt.imsave(f'mmm{img:03d}.tiff', mmm)
-        print(f'mmm{img:03d}.tiff generated')
+        plt.imsave(f'{args.output}_{img:03d}.tiff', mmm)
+        print(f'{args.output}_{img:03d}.tiff generated')
