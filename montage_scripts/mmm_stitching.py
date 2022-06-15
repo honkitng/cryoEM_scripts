@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
+def mmm_stitching(mmm_file, index, rows, columns, overlap, dataset, inverted=False):
     mmm_meta = {}
 
     with open(mmm_file, 'rb') as f:
@@ -31,17 +31,12 @@ def mmm_stitching(mmm_file, index, rows, columns, overlap, inverted=False):
             for j in range(rows):
                 img_gray = np.fromfile(f, p_type, nx * ny).reshape(ny, nx)
 
-                """
-                This seems to work for some but not all micrographs; may have to change depending on the micrographs
-                """
-
-                """
-                img_gray[img_gray > 255] = 255
-                img_gray[img_gray < 0] = 0
-                img_gray = np.uint8(img_gray)
-                """
-
-                img_gray = (img_gray / 256).astype('uint8')
+                if dataset == 0:
+                    img_gray[img_gray > 255] = 255
+                    img_gray[img_gray < 0] = 0
+                    img_gray = np.uint8(img_gray)
+                else:
+                    img_gray = (img_gray / 256).astype('uint8')
 
                 if j > 0:
                     template = img_gray[:template_y]
@@ -93,6 +88,7 @@ if __name__ == '__main__':
     parser.add_argument('rows', help='number of images per rows', type=int)
     parser.add_argument('columns', help='number of images per column', type=int)
     parser.add_argument('overlap', help='%% overlap between individual images', type=int)
+    parser.add_argument('type', help='dataset type (0: cryo-EM, 1: negative stain)', type=int)
 
     args = parser.parse_args()
 
@@ -102,7 +98,7 @@ if __name__ == '__main__':
     image_count = nz1 // args.rows // args.columns
 
     for img in range(image_count):
-        _, mmm = mmm_stitching(args.file, img, args.rows, args.columns, args.overlap)
+        _, mmm = mmm_stitching(args.file, img, args.rows, args.columns, args.overlap, args.type)
         mmm = cv2.equalizeHist(mmm)
         # plt.imshow(mmm, cmap='gray')
         # plt.show()

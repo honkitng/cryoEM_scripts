@@ -6,7 +6,7 @@ Accepts an MMM file and outputs stitched tiff files of all the MMMs.
 
 ### Usage
 
-    ./saveMMM_[Operating system] [MMM file] [number of rows in MMM] [number of columns in MMM] [overlap %]
+    python3.8 mmm_stitching.py [MMM file] [number of rows in MMM] [number of columns in MMM] [overlap %] [dataset type]
 
 ### Requirements:
 * python3.8
